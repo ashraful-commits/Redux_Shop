@@ -1,0 +1,34 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(202, 235, 248);
+  font-family: "Poppins", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+}
+a:active {
+  color: #fff;
+}
+ul {
+  padding-bottom: 0;
+}
+
+li {
+  list-style-type: none;
+}
+li:hover {
+  background-color: rgb(195, 253, 180);
+}
+li:active {
+  background-color: rgb(195, 253, 180);
+}
