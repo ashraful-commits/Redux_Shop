@@ -1,27 +1,23 @@
 import mongoose from "mongoose";
 
-
 //======================cretagSchemate schema
-const tagSchema =mongoose.Schema({
-    name:{
-        type:String,
-        trim:true
+const tagSchema = mongoose.Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
     },
-    slug:{
-        type:String,
-        trim:true
+    slug: {
+      type: String,
+      trim: true,
     },
-    
-    photo:{
-        type:String,
-        trim:true,
-        default:null
+    status: {
+      type: Boolean,
+      default: false,
     },
-    
-    
-},{timestamps:true})
-
-
+  },
+  { timestamps: true }
+);
 
 //========================product model
-export const tagModel =mongoose.model("Tag",tagSchema)
+export const tagModel = mongoose.model("Tag", tagSchema);

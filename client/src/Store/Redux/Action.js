@@ -36,6 +36,7 @@ export const getAllBrandProduct = () => async (dispatch) => {
 };
 
 //=================== careate brand prodcut
+
 export const CreateBrandProduct = (data) => async (dispatch) => {
   try {
     dispatch({ type: BRAND_REQ_CREATE });
@@ -51,7 +52,9 @@ export const CreateBrandProduct = (data) => async (dispatch) => {
     dispatch({ type: BRAND_REQ_CREATE_FAILD, payload: error.message });
   }
 };
+
 //=================== delete brand prodcut
+
 export const deleteBrandProduct = (id) => async (dispatch) => {
   try {
     dispatch({ type: BRAND_REQ_DELETE });
@@ -69,6 +72,7 @@ export const deleteBrandProduct = (id) => async (dispatch) => {
 };
 
 //=================== update  brand prodcut
+
 export const updateBrandProduct =
   ({ Id, form_data }) =>
   async (dispatch) => {
@@ -86,9 +90,9 @@ export const updateBrandProduct =
       dispatch({ type: BRAND_REQ_DELETE_FAILD, payload: error.message });
     }
   };
+
 //============================= status update
 
-//=================== update  brand prodcut
 export const statusBrandupdateProduct =
   ({ id, status }) =>
   async (dispatch) => {

@@ -19,7 +19,7 @@ import {
 } from "../ActionType";
 import { InitialState } from "../InitialState";
 
-const catgoryReducer = (state = InitialState, { type, payload }) => {
+const catagoryReducer = (state = InitialState, { type, payload }) => {
   switch (type) {
     case CATAGORY_REQ:
       return {
@@ -108,4 +108,4 @@ const catgoryReducer = (state = InitialState, { type, payload }) => {
   }
 };
 
-export default catgoryReducer;
+export default catagoryReducer;

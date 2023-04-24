@@ -52,15 +52,25 @@ const Brand = () => {
     e.preventDefault();
     const form_data = new FormData();
     form_data.append("name", input.name);
-    form_data.append("photo", image);
+
     if (Id) {
+      const singleData = brands.find((item) => item._id === Id);
+      if (image) {
+        form_data.append("photo", image);
+      } else {
+        form_data.append("photo", singleData.photo);
+      }
       dispatch(updateBrandProduct({ Id, form_data }));
-      e.target.reset();
       setId();
+      setImage(null);
+      setShow(false);
+      setInput("");
     } else {
+      form_data.append("photo", image);
       dispatch(CreateBrandProduct(form_data));
       setShow(false);
-      e.target.reset();
+      setImage(null);
+      setInput("");
     }
   };
   //===================update checked
@@ -116,7 +126,7 @@ const Brand = () => {
                   <thead>
                     <tr className="align-middle">
                       <th>#</th>
-                      <th>name</th>
+                      <th>Name</th>
                       <th>Photo</th>
                       <th>Status</th>
                       <th>Action</th>

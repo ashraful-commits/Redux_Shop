@@ -18,11 +18,12 @@ export const GetAllCatagoryProducts = async (req, res, next) => {
 //================create product
 export const createCatagoryProducts = async (req, res, next) => {
   try {
-    const { name, slug } = req.body;
-    const data = await CatagoryModel.create(
-      { name, slug: createSlug(slug), photo: req.file.filename },
-      { new: true }
-    );
+    const { name } = req.body;
+    const data = await CatagoryModel.create({
+      name,
+      slug: createSlug(name),
+      photo: req.file.filename,
+    });
 
     res.status(200).json({
       catagory: data,
@@ -49,12 +50,16 @@ export const getSinglCatagoryeProducts = async (req, res, next) => {
 export const updateSingleCatagoryProducts = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { name, slug } = req.body;
-    const data = await CatagoryModel.findByIdAndUpdate(id, {
-      name,
-      slug: createSlug(slug),
-      photo: req.file && req.file.filename,
-    });
+    const { name, photo } = req.body;
+    const data = await CatagoryModel.findByIdAndUpdate(
+      id,
+      {
+        name,
+        slug: createSlug(name),
+        photo: req.file?.filename ? req.file.filename : photo,
+      },
+      { new: true }
+    );
     res.status(200).json({
       catagory: data,
       message: "Update Single catagory product",
@@ -71,6 +76,25 @@ export const deleteSingleCatagoryProducts = async (req, res, next) => {
     res.status(200).json({
       catagory: data,
       message: "Delete Single catagory product",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+//================status update catagory product
+export const statusSingleCatagoryProducts = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    const data = await CatagoryModel.findByIdAndUpdate(
+      { _id: id },
+      { status },
+      { new: true }
+    );
+    res.status(200).json({
+      catagory: data,
+      message: "Status Single catagory product",
     });
   } catch (error) {
     next(error);
